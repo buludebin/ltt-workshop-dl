@@ -1,0 +1,17 @@
+# 下载产物
+*.vpk
+*.jpg
+*.part
+*.part.json
+
+# 运行期文件
+run.log
+run.log.1
+settings.ini
+
+# 打包产物
+dist/
+build/
+*.spec
+__pycache__/
+*.pyc
