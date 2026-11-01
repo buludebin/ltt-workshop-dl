@@ -5,7 +5,7 @@
 **不用开游戏、不用登录 Steam、不用 steamcmd。**
 
 > **说明**：本项目的代码与文档由 **AI（DeepSeek Harness）** 协助生成，作者负责提出需求、真机测试与验收。
-> 这只是个小工具，以 **MIT 许可**公开 —— 随便用、随便改、随便再分发。
+> 这只是个小工具，以 **GPL-3.0** 公开 —— 可以自由使用和修改，但**分发或衍生的版本必须同样开源**。
 
 ---
 
@@ -96,6 +96,14 @@ venv\Scripts\pyinstaller --onefile --console --name LTT_WorkshopDL ltt_workshop_
 
 ## 许可
 
-**MIT License** —— 见 [LICENSE](LICENSE)。随意使用、修改、分发；不提供任何担保。
+**GNU General Public License v3.0 (GPL-3.0)** —— 全文见 [LICENSE](LICENSE)。
+
+这意味着：
+
+- ✅ 可以自由使用、修改、分发给朋友
+- ✅ 允许收费（GPL 本身不禁止卖钱）
+- ❗ **但**：分发的每一份（收费或免费）都必须附带源码，且**衍生作品必须同样以 GPL 开源**
+- ❗ 所以"改个名字、闭源打包拿去卖"这条路是堵死的
+- ❌ 不提供任何担保
 
 下载内容的使用请遵守 Steam 订户协议与原作者许可。本工具不包含任何第三方代码，仅使用 Python 标准库。
