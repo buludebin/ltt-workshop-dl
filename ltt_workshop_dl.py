@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 r"""
-LTT 工坊下载器 (v0.5)
+LTT 工坊下载器 (v0.7.1)
 ================================================
+给 Left 4 Dead 2（appid 550）下载工坊物品 / 合集。
+本项目的代码与文档由 AI（DeepSeek Harness）协助生成，作者负责需求、真机测试与验收。
+以 MIT 许可公开。
+
 用途：L4D2（appid 550）工坊物品 / 合集 → 下载到本工具所在目录。
 原理：Steam 公开 API `GetPublishedFileDetails` 返回 `file_url` 直链，直接 HTTP 下载
       （默认 8 条并行 + Range 分段；支持断点续传、分段重试；合集可勾选要下哪些）。

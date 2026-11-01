@@ -4,12 +4,17 @@
 
 **不用开游戏、不用登录 Steam、不用 steamcmd。**
 
+> **说明**：本项目的代码与文档由 **AI（DeepSeek Harness）** 协助生成，作者负责提出需求、真机测试与验收。
+> 这只是个小工具，以 **MIT 许可**公开 —— 随便用、随便改、随便再分发。
+
 ---
 
 ## 为什么要有这个东西
 
 L4D2 的工坊内容必须**开着游戏**才会下载；而其他游戏（饥荒、Unturned 等）走 Steam 客户端就能下。
-另外 steamcmd 在部分 Windows 机器上会因为自带的旧版引导程序不支持 HTTPS 而无法自更新（`Can't use HTTPS ... ENABLE_OPENSSLCONNECTION`），
+
+另外 steamcmd 在部分 Windows 机器上会因为自带的旧版引导程序不支持 HTTPS 而无法自更新
+（`Can't use HTTPS because steamcommon was compiled without ENABLE_OPENSSLCONNECTION`），
 导致常见的下载工具全部卡死。
 
 本工具直接走 **Steam 公开 API** 的直链，绕开上述两个问题。
@@ -24,7 +29,7 @@ L4D2 的工坊内容必须**开着游戏**才会下载；而其他游戏（饥�
 ## 功能
 
 - 单个物品 / **合集**（合集支持勾选、搜索、已选合计）
-- **批量粘贴**：一次粘多条（换行/逗号/分号/中文逗号都能拆）
+- **批量粘贴**：一次粘多条（换行 / 逗号 / 分号 / 中文逗号都能拆）
 - **断点续传** + 分段重试（每段 3 次）
 - **8 并行下载**（默认；可调 1~16）
 - 可选代理（默认关，记在 `settings.ini`）
@@ -36,9 +41,12 @@ L4D2 的工坊内容必须**开着游戏**才会下载；而其他游戏（饥�
 
 ## 用法
 
-### 方式一：exe（推荐给没有 Python 的人）
+### 方式一：exe（给没有 Python 的人）
 
 双击 `LTT_WorkshopDL.exe` → 粘贴工坊链接或物品 ID → 回车。
+
+> exe 未做代码签名。若系统提示「Windows 已保护你的电脑」，点**更多信息 → 仍要运行**即可
+> （该提示由文件的"来自 Internet"标记触发，走聊天软件直接传文件通常不会出现）。
 
 ### 方式二：源码
 
@@ -68,12 +76,13 @@ settings.ini          代理开关 / 地址 / 线程数
 ## 已知限制
 
 - **只支持 L4D2（appid 550）**
-- 有些物品 `file_url` 为空（或已被作者删除/转私密，API `result=9`）⇒ 本工具下不了；
-  工具会打印 **steamcmd 的替代命令**（L4D2 支持匿名下载）：
+- 有些物品 `file_url` 为空（或已被作者删除/转私密，API 返回 `result=9`）⇒ 本工具下不了；
+  工具会直接打印 **steamcmd 的替代命令**（L4D2 支持匿名下载，不需要登录）：
   ```
   steamcmd +login anonymous +workshop_download_item 550 <物品ID> +quit
   ```
-  下载结果在 `steamapps/workshop/content/550/<物品ID>/` 下，文件名是 `*.bin`，**改名成 `.vpk`** 再放进 `left4dead2/addons/`。
+  下载结果在 `steamapps/workshop/content/550/<物品ID>/` 下，文件名是 `*.bin`，
+  **改名成 `.vpk`** 再放进 `left4dead2/addons/`。
 - 依赖 Steam 公开 API 的行为：若 Valve 改变 `file_url` 的提供方式（例如改为需要登录），本工具会失效。
 - 合集是**逐个**下载，不会同时下多个物品。
 
@@ -85,7 +94,8 @@ venv\Scripts\pip install pyinstaller
 venv\Scripts\pyinstaller --onefile --console --name LTT_WorkshopDL ltt_workshop_dl.py
 ```
 
-## 说明
+## 许可
 
-- 仅供个人自用。下载内容的使用请遵守 Steam 订户协议与原作者许可。
-- 不包含任何第三方代码；仅使用 Python 标准库。
+**MIT License** —— 见 [LICENSE](LICENSE)。随意使用、修改、分发；不提供任何担保。
+
+下载内容的使用请遵守 Steam 订户协议与原作者许可。本工具不包含任何第三方代码，仅使用 Python 标准库。
